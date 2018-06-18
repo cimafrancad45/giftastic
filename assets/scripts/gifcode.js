@@ -1,5 +1,7 @@
-//event listener
-$("button").on("click", function(){
+
+
+//event listener for btn-primary class
+$(".btn-primary").on("click", function() {
 //code to generate gifs on the webpage
   var animeTitle = $(this).attr("data-title");
   //var limit = $("#images-number").val().trim();
@@ -14,21 +16,21 @@ $("button").on("click", function(){
       }).then(function(response) {
         console.log(response);
 
-        var result = response.data;
+        var results = response.data;
 
         //loop for results
-        for (var i = 0; i < result.length; i++) {
+        for (var i = 0; i < results.length; i++) {
           //creates a new div
-          var resultDiv = $("<div");
+          var titleDiv = $("<div>");
           //img tag
-          var gifImg = $("<img>");
+          var animeImg = $("<img>");
       
-          gifImg.attr("src", result[i].images.fixed_height.url);
+          animeImg.attr("src", results[i].images.fixed_height.url);
           // giving the image tag
-          resultDiv.append(p);
-          resultDiv.append(gifImg);
+          
+          titleDiv.append(animeImg);
           //prepend the gifs on the page
-          $("#gif-print").prepend(resultDiv);
-    }
-  });
+          $("#gif-print").prepend(titleDiv);
+        }
+    });
 });
