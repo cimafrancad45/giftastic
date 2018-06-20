@@ -1,10 +1,30 @@
+$(document).ready(function() {
+$(".btn-secondary").on("click", function(){
+  //prevents default input
+  event.preventDefault();
+  //variable of the form
+  var animeInput = $("#animeform").val().trim();
+  console.log(animeInput)
+  //button jquery
+  var animeButton = $("<button>");
 
+  //Gives class btn-primary for other btn-primary listener and data-title value
+  animeButton.attr("class", "btn-primary")
+  animeButton.attr("data-title", animeInput);
+  
+  animeButton.append(animeInput);
+
+  $("#button-print").append(animeButton);
+
+
+})
 
 //event listener for btn-primary class
-$(".btn-primary").on("click", function() {
-//code to generate gifs on the webpage
+$("#button-print").on("click", ".btn-primary", function() {
+  event.preventDefault();
+  //code to generate gifs on the webpage
   var animeTitle = $(this).attr("data-title");
-  //var limit = $("#images-number").val().trim();
+
   //queryURL with API key
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animeTitle + 
   "&limit=10&offset=0&rating=G&lang=en&api_key=AJOub3mgZOkizoUySCJfxu6OcdeD0hxQ&"
@@ -33,4 +53,5 @@ $(".btn-primary").on("click", function() {
           $("#gif-print").prepend(titleDiv);
         }
     });
+});
 });
