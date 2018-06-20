@@ -11,6 +11,7 @@ $(".btn-secondary").on("click", function(){
   //Gives class btn-primary for other btn-primary listener and data-title value
   animeButton.attr("class", "btn-primary")
   animeButton.attr("data-title", animeInput);
+  animeButton.attr("style", "margin: 5px");
   
   animeButton.append(animeInput);
 
@@ -46,12 +47,19 @@ $("#button-print").on("click", ".btn-primary", function() {
           var animeImg = $("<img>");
       
           animeImg.attr("src", results[i].images.fixed_height.url);
+          animeImg.attr("class", "col-sm");
           // giving the image tag
           
           titleDiv.append(animeImg);
           //prepend the gifs on the page
           $("#gif-print").prepend(titleDiv);
-        }
+          
+          
+        };
+        //resets the titleDiv and animeImg variables
+
+        
+    
     });
 });
 });
